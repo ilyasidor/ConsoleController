@@ -9,17 +9,17 @@ namespace MoveConsole
         {
             int wieght = 300;//y
             int height = 300;//x
-            //set defoult parameters
+            
             ConsoleChange cONSOLE = new ConsoleChange(wieght,height,300,300);
 
-            //set defoult var
+            
             int speed = 15;
             int x=0;
             int y=0;
 
             Console.Write("READY? ");
             Console.ReadLine();
-            //shange location
+            
             cONSOLE.ChangeLocationConsole(x,y);
             while (true)
             {
@@ -50,10 +50,8 @@ namespace MoveConsole
                     Thread.Sleep(1);
                 }
             }
-
         }
     }
-    //class Console Change
     public class ConsoleChange
     {
         
@@ -80,32 +78,21 @@ namespace MoveConsole
 
         private int height;
         private int wight;
+        
         public ConsoleChange(int height, int wight, int x, int y)
         {
-
-
             this.height = height;
             this.wight = wight;
             this.x = x;
             this.y = y;
         }
+        
         public ConsoleChange(int height, int wight)
         {
-
-
             this.height = height;
             this.wight = wight;
         }
 
-
-        public void ShowConsole()
-        {
-            IntPtr ConsoleHandle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
-            const UInt32 WINDOW_FLAGS = SWP_SHOWWINDOW;
-
-            // Здесь 0,0 - позиция окна (x, y)     700 - ширина       600 - высота
-            SetWindowPos(ConsoleHandle, HWND_NOTOPMOST, x, y, height, wight, WINDOW_FLAGS);
-        }
         public void ChangeLocationConsole(int x, int y)
         {
             IntPtr ConsoleHandle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
@@ -114,6 +101,7 @@ namespace MoveConsole
             // Здесь 0,0 - позиция окна (x, y)     700 - ширина       600 - высота
             SetWindowPos(ConsoleHandle, HWND_NOTOPMOST, x, y, height, wight, WINDOW_FLAGS);
         }
+        
         public void ChangeSizeConsole(int wight, int height)
         {
             IntPtr ConsoleHandle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
